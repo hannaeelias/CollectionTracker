@@ -12,7 +12,7 @@ namespace CollectionTracker.Data
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Item> Items { get; set; }
-        public DbSet<Collection> Categories { get; set; }
+        public DbSet<Collection> Collections { get; set; }
         public DbSet<Wishlist> Series { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
