@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CollectionTracker.Data
 {
-    class CollectionContext : DbContext
+    public class CollectionContext : DbContext
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Item> Items { get; set; }
@@ -17,8 +17,11 @@ namespace CollectionTracker.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("connection string herer");
-            ///ik heb een probleem met sql server ik ben het aan het oplossen
+            optionsBuilder.UseMySql(
+               "server=localhost;database=CollectionTrackerDB;user=root;password=Jessica7793",
+                new MySqlServerVersion(new Version(8, 0, 37)) 
+            );
+
         }
     }
 }

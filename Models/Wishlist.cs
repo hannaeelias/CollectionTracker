@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CollectionTracker.Models
 {
-    class Wishlist
+    public class Wishlist
     {
         public int WishlistId { get; set; }
         public int ItemId { get; set; }
