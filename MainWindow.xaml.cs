@@ -14,16 +14,50 @@ namespace CollectionTracker
             currentUserId = userId;
             LoadCollections(); // Load collections on startup
         }
+        private void CollectionsListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if (CollectionsListBox.SelectedItem is Collection selectedCollection)
+            {
+                // Log to check if the event is triggered
+                Console.WriteLine("Collection selected: " + selectedCollection.Name);
+
+                AddItemToCollectionPanel.Visibility = Visibility.Visible;
+                ViewCollectionButton.Visibility = Visibility.Visible;
+                ViewWishlistButton.Visibility = Visibility.Visible;
+                SelectedCollectionName.Text = selectedCollection.Name;
+                SelectedCollectionDesc.Text = selectedCollection.Description;
+
+                LoadCollectionItems(selectedCollection.CollectionId);
+                ItemsListBox.Visibility = Visibility.Visible;
+
+                // Show controls to add items to the collection
+                ItemcatgoryTextBox.Visibility = Visibility.Visible;
+                ItemdecTextBox.Visibility = Visibility.Visible;
+                ItemseriesTextBox.Visibility = Visibility.Visible;
+                ItemNameTextBox.Visibility = Visibility.Visible;
+                AddItemToCollectionButton.Visibility = Visibility.Visible;
+
+                // Show back button
+                BackButton.Visibility = Visibility.Visible;
+
+                // Hide other controls
+                CollectionNameTextBox.Visibility = Visibility.Collapsed;
+                CollectiondecTextBox.Visibility = Visibility.Collapsed;
+                AddCollectionButton.Visibility = Visibility.Collapsed;
+                CollectionsListBox.Visibility = Visibility.Collapsed;
+            }
+        }
+
 
         // Back Button Click - Return to Main View
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            // Show main controls
+            // Show main controls (Collections List, View Buttons)
             ViewCollectionButton.Visibility = Visibility.Visible;
             ViewWishlistButton.Visibility = Visibility.Visible;
             CollectionsListBox.Visibility = Visibility.Visible;
 
-            // Hide collection-specific controls
+            // Hide collection-specific controls (like collection details and item controls)
             SelectedCollectionName.Visibility = Visibility.Collapsed;
             SelectedCollectionDesc.Visibility = Visibility.Collapsed;
             ItemsListBox.Visibility = Visibility.Collapsed;
@@ -38,16 +72,20 @@ namespace CollectionTracker
             BackButton.Visibility = Visibility.Collapsed;
         }
 
+
         // View Collection Button Click
         private void ViewCollectionButton_Click(object sender, RoutedEventArgs e)
         {
             // Show collection-related UI
+            AddCollectionPanel.Visibility = Visibility.Visible;
             CollectionNameTextBox.Visibility = Visibility.Visible;
             CollectiondecTextBox.Visibility = Visibility.Visible;
             AddCollectionButton.Visibility = Visibility.Visible;
             CollectionsListBox.Visibility = Visibility.Visible;
 
             // Hide wishlist UI
+            AddItemToCollectionPanel.Visibility = Visibility.Collapsed;
+            wishlistwannring.Visibility = Visibility.Collapsed;
             WishlistListBox.Visibility = Visibility.Collapsed;
             AddItemToWishlistButton.Visibility = Visibility.Collapsed;
             ItemsListBox.Visibility = Visibility.Collapsed;
@@ -63,6 +101,8 @@ namespace CollectionTracker
         private void ViewWishlistButton_Click(object sender, RoutedEventArgs e)
         {
             // Show wishlist-related UI
+            wishlistwannring.Visibility = Visibility.Visible;
+            AddItemToCollectionPanel.Visibility = Visibility.Visible;
             WishlistListBox.Visibility = Visibility.Visible;
             ItemNameTextBox.Visibility = Visibility.Visible;
             ItemcatgoryTextBox.Visibility = Visibility.Visible;
@@ -71,6 +111,8 @@ namespace CollectionTracker
             AddItemToWishlistButton.Visibility = Visibility.Visible;
 
             // Hide collection UI
+            AddItemToCollectionPanel.Visibility = Visibility.Collapsed;
+            AddCollectionPanel.Visibility = Visibility.Collapsed;
             CollectionNameTextBox.Visibility = Visibility.Collapsed;
             CollectiondecTextBox.Visibility = Visibility.Collapsed;
             AddCollectionButton.Visibility = Visibility.Collapsed;
@@ -102,6 +144,8 @@ namespace CollectionTracker
 
                 CollectionNameTextBox.Clear();
                 LoadCollections();
+                MessageBox.Show("collection  added");
+
             }
             else
             {
@@ -152,37 +196,7 @@ namespace CollectionTracker
         }
 
         // When Collection is Selected
-        private void CollectionsListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-            if (CollectionsListBox.SelectedItem is Collection selectedCollection)
-            {
-                ViewCollectionButton.Visibility = Visibility.Visible;
-                ViewWishlistButton.Visibility = Visibility.Visible;
-                // Display selected collection name and items
-                SelectedCollectionName.Text = selectedCollection.Name;
-                SelectedCollectionDesc.Text = selectedCollection.Description;
-
-
-                LoadCollectionItems(selectedCollection.CollectionId);
-                ItemsListBox.Visibility = Visibility.Visible;
-
-                // Show controls to add items to the collection
-                ItemcatgoryTextBox.Visibility = Visibility.Visible;
-                ItemdecTextBox.Visibility = Visibility.Visible;
-                ItemseriesTextBox.Visibility = Visibility.Visible;
-                ItemNameTextBox.Visibility = Visibility.Visible;
-                AddItemToCollectionButton.Visibility = Visibility.Visible;
-
-                // Show back button
-                BackButton.Visibility = Visibility.Visible;
-                // Hide other controls
-
-                CollectionNameTextBox.Visibility = Visibility.Collapsed;
-                CollectiondecTextBox.Visibility = Visibility.Collapsed;
-                AddCollectionButton.Visibility = Visibility.Collapsed;
-                CollectionsListBox.Visibility = Visibility.Collapsed;
-            }
-        }
+        
 
 
         // When an Item is Selected in the ItemsListBox
@@ -226,6 +240,7 @@ namespace CollectionTracker
 
                 ItemNameTextBox.Clear();
                 LoadCollectionItems(selectedCollection.CollectionId);
+                MessageBox.Show("collection item added");
             }
             else
             {
@@ -263,6 +278,8 @@ namespace CollectionTracker
                 // Clear the item name textbox and reload the wishlist
                 ItemNameTextBox.Clear();
                 LoadWishlist();
+                MessageBox.Show("wishlist item added");
+
             }
             else
             {
