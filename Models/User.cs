@@ -12,5 +12,8 @@ namespace CollectionTracker.Models
         public string Username { get; set; }
         public string PasswordHash { get; set; }
         public string AccessKey { get; set; }
+
+        public List<Collection> Collections { get; set; }
+        public List<Wishlist> Wishlists { get; set; }
     }
 }

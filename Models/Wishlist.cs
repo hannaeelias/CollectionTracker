@@ -12,5 +12,9 @@ namespace CollectionTracker.Models
         public int ItemId { get; set; }
         public int UserId { get; set; }
         public int Priority { get; set; }
+
+        public Item Item { get; set; }
+        public User User { get; set; }
     }
+
 }

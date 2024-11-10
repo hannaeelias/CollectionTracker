@@ -14,5 +14,8 @@ namespace CollectionTracker.Models
         public int UserId { get; set; }
         public User User { get; set; }
 
+        public List<CollectionItem> CollectionItems { get; set; }  // Many-to-many relationship through junction table
+
+
     }
 }

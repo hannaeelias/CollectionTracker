@@ -4,11 +4,17 @@ using System.Windows;
 
 namespace CollectionTracker
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
-    }
+        public App()
+        {
+            // Initialize the database
+            using (var context = new CollectionContext())
+            {
+                context.InitializeDatabase(); // Ensure the database is created and seeded
+            }
 
+            InitializeComponent();
+        }
+    }
 }
