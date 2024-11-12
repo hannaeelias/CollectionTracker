@@ -59,28 +59,30 @@ namespace CollectionTracker
         // Back Button Click - Return to Main View
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            // Show main controls (Collections List, View Buttons)
-            ViewCollectionButton.Visibility = Visibility.Visible;
-            ViewWishlistButton.Visibility = Visibility.Visible;
+            // Show collection-related UI
+            AddCollectionPanel.Visibility = Visibility.Visible;
+            CollectionNameTextBox.Visibility = Visibility.Visible;
+            CollectiondecTextBox.Visibility = Visibility.Visible;
+            AddCollectionButton.Visibility = Visibility.Visible;
             CollectionsListBox.Visibility = Visibility.Visible;
 
-            // Hide collection-specific controls (like collection details and item controls)
+            // Hide wishlist UI
+            AddItemToCollectionPanel.Visibility = Visibility.Collapsed;
             wishlistwannring.Visibility = Visibility.Collapsed;
-            SelectedCollectionName.Visibility = Visibility.Collapsed;
-            SelectedCollectionDesc.Visibility = Visibility.Collapsed;
+            WishlistListBox.Visibility = Visibility.Collapsed;
+            AddItemToWishlistButton.Visibility = Visibility.Collapsed;
             ItemsListBox.Visibility = Visibility.Collapsed;
+            WishlistListBox.Visibility = Visibility.Collapsed;
             ItemNameTextBox.Visibility = Visibility.Collapsed;
             ItemcatgoryTextBox.Visibility = Visibility.Collapsed;
             ItemdecTextBox.Visibility = Visibility.Collapsed;
             ItemseriesTextBox.Visibility = Visibility.Collapsed;
-            AddItemToCollectionButton.Visibility = Visibility.Collapsed;
-            WishlistListBox.Visibility = Visibility.Collapsed;
-            AddItemToWishlistButton.Visibility = Visibility.Collapsed;
             SelectedItemDetails.Visibility = Visibility.Collapsed;
-            BackButton.Visibility = Visibility.Collapsed;
-            CollectiondecTextBox.Visibility = Visibility.Collapsed;
             itemname.Visibility = Visibility.Collapsed;
-            WishlistListBox.Visibility = Visibility.Collapsed;
+            BackButton.Visibility = Visibility.Collapsed;
+
+
+            LoadCollections();
 
 
         }
@@ -109,6 +111,7 @@ namespace CollectionTracker
             ItemseriesTextBox.Visibility = Visibility.Collapsed;
             SelectedItemDetails.Visibility = Visibility.Collapsed;
             itemname.Visibility = Visibility.Collapsed;
+            BackButton.Visibility = Visibility.Collapsed;
 
             LoadCollections();
         }
@@ -137,6 +140,7 @@ namespace CollectionTracker
             AddCollectionButton.Visibility = Visibility.Collapsed;
             CollectionsListBox.Visibility = Visibility.Collapsed;
             SelectedItemDetails.Visibility = Visibility.Collapsed;
+            BackButton.Visibility = Visibility.Collapsed;
 
             // Load wishlist items
             LoadWishlist();

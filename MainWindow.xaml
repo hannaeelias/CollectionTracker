@@ -21,6 +21,7 @@
         <!-- Main Content Area -->
         <Grid Grid.Column="1">
             <StackPanel Name="MainContentPanel">
+                
                 <TextBlock Name="wishlistwannring" Text="this sections isn't done het" Margin="10" Visibility="Collapsed"/>
 
                 <!-- Back Button -->
@@ -53,6 +54,8 @@
                     <TextBox Name="ItemseriesTextBox" Margin="10" />
                     <Button Name="AddItemToCollectionButton" Content="Add Item to Collection" Click="AddItemToCollectionButton_Click" Margin="10" />
                 </StackPanel>
+                <!-- Wishlist Section -->
+                <Button Name="AddItemToWishlistButton" Content="Add Item to Wishlist" Click="AddItemToWishlistButton_Click" Margin="10" Visibility="Collapsed" />
                 <ListBox x:Name="ItemsListBox" Visibility="Collapsed">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
@@ -82,8 +85,7 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-                <!-- Wishlist Section -->
-                <Button Name="AddItemToWishlistButton" Content="Add Item to Wishlist" Click="AddItemToWishlistButton_Click" Margin="10" Visibility="Collapsed" />
+               
 
                 <!-- Collection Details Section -->
                 <TextBlock Name="SelectedCollectionDesc" FontSize="14" Margin="10" Visibility="Collapsed" />
