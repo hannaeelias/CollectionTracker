@@ -34,17 +34,24 @@ namespace CollectionTracker
                 ItemcatgoryTextBox.Visibility = Visibility.Visible;
                 ItemdecTextBox.Visibility = Visibility.Visible;
                 ItemseriesTextBox.Visibility = Visibility.Visible;
-                ItemNameTextBox.Visibility = Visibility.Visible;
+                itemname.Visibility = Visibility.Visible;
                 AddItemToCollectionButton.Visibility = Visibility.Visible;
+                ItemNameTextBox.Visibility = Visibility.Visible;
+
+
 
                 // Show back button
                 BackButton.Visibility = Visibility.Visible;
 
                 // Hide other controls
+                wishlistwannring.Visibility = Visibility.Collapsed;
                 CollectionNameTextBox.Visibility = Visibility.Collapsed;
                 CollectiondecTextBox.Visibility = Visibility.Collapsed;
                 AddCollectionButton.Visibility = Visibility.Collapsed;
                 CollectionsListBox.Visibility = Visibility.Collapsed;
+                AddCollectionPanel.Visibility = Visibility.Collapsed;
+                WishlistListBox.Visibility = Visibility.Collapsed;
+
             }
         }
 
@@ -58,6 +65,7 @@ namespace CollectionTracker
             CollectionsListBox.Visibility = Visibility.Visible;
 
             // Hide collection-specific controls (like collection details and item controls)
+            wishlistwannring.Visibility = Visibility.Collapsed;
             SelectedCollectionName.Visibility = Visibility.Collapsed;
             SelectedCollectionDesc.Visibility = Visibility.Collapsed;
             ItemsListBox.Visibility = Visibility.Collapsed;
@@ -70,6 +78,11 @@ namespace CollectionTracker
             AddItemToWishlistButton.Visibility = Visibility.Collapsed;
             SelectedItemDetails.Visibility = Visibility.Collapsed;
             BackButton.Visibility = Visibility.Collapsed;
+            CollectiondecTextBox.Visibility = Visibility.Collapsed;
+            itemname.Visibility = Visibility.Collapsed;
+            WishlistListBox.Visibility = Visibility.Collapsed;
+
+
         }
 
 
@@ -89,11 +102,14 @@ namespace CollectionTracker
             WishlistListBox.Visibility = Visibility.Collapsed;
             AddItemToWishlistButton.Visibility = Visibility.Collapsed;
             ItemsListBox.Visibility = Visibility.Collapsed;
+            WishlistListBox.Visibility = Visibility.Collapsed;
             ItemNameTextBox.Visibility = Visibility.Collapsed;
             ItemcatgoryTextBox.Visibility = Visibility.Collapsed;
             ItemdecTextBox.Visibility = Visibility.Collapsed;
             ItemseriesTextBox.Visibility = Visibility.Collapsed;
             SelectedItemDetails.Visibility = Visibility.Collapsed;
+            itemname.Visibility = Visibility.Collapsed;
+
             LoadCollections();
         }
 
@@ -109,6 +125,9 @@ namespace CollectionTracker
             ItemdecTextBox.Visibility = Visibility.Visible;
             ItemseriesTextBox.Visibility = Visibility.Visible;
             AddItemToWishlistButton.Visibility = Visibility.Visible;
+            ItemNameTextBox.Visibility = Visibility.Visible;
+            itemname.Visibility = Visibility.Visible;
+            WishlistListBox.Visibility = Visibility.Visible;
 
             // Hide collection UI
             AddItemToCollectionPanel.Visibility = Visibility.Collapsed;
@@ -117,7 +136,6 @@ namespace CollectionTracker
             CollectiondecTextBox.Visibility = Visibility.Collapsed;
             AddCollectionButton.Visibility = Visibility.Collapsed;
             CollectionsListBox.Visibility = Visibility.Collapsed;
-            ItemsListBox.Visibility = Visibility.Collapsed;
             SelectedItemDetails.Visibility = Visibility.Collapsed;
 
             // Load wishlist items
@@ -174,12 +192,13 @@ namespace CollectionTracker
             {
                 var collectionItems = context.CollectionItems
                                               .Where(ci => ci.CollectionId == collectionId)
-                                              .Select(ci => ci.Item)
+                                              .Select(ci => ci.Item)  
                                               .ToList();
 
                 ItemsListBox.ItemsSource = collectionItems;
             }
         }
+
 
         // Load Wishlist from the Database
         private void LoadWishlist()
@@ -195,8 +214,9 @@ namespace CollectionTracker
             }
         }
 
+
         // When Collection is Selected
-        
+
 
 
         // When an Item is Selected in the ItemsListBox
